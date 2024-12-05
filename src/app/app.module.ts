@@ -8,7 +8,7 @@ import { ContentSectionComponent } from './content-section/content-section.compo
 import { FooterSectionComponent } from './footer-section/footer-section.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { MatrialModule } from './modules/matrial/matrial.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatrialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
