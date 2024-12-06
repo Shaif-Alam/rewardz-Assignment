@@ -7,7 +7,7 @@
 
 .sub-heading{
     color: black;
-    font-weight: 500;
+    font-weight: 700;
     font-size: clamp(12px,1.5vw,16px);
 }
 
@@ -18,7 +18,7 @@
 }
 .mat-drawer {
     width: 300px; 
-    // height: 100vh;
+    height: 100vh;
   }
 .example-container {
     width: 600px;
@@ -36,7 +36,7 @@
     padding: 20px;
   }
   
-img{
+.img_logo{
     width: 100%;
     object-fit: cover;
 }
@@ -62,7 +62,8 @@ img{
       font-size: clamp(16px,1.5vw,20px);
   }
   .bg-main{
-    background-color: lightblue;
+    // background-color: lightblue;
+    background-color: #F5F5FF;
   }
   .high-demand-overlay {
     position: absolute;
@@ -97,31 +98,78 @@ img{
     gap: 8px;
   }
   
+
   .mat-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    // background-color: #F44336; /* Default color */
-    color: #0e0e0e;
+    padding: 10px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-family: Roboto, Arial, sans-serif;
-    font-size: 12px;
-    position: relative;
-    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s;
   }
   
-  .mat-button input[type="radio"] {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
+  .mat-button input {
+    display: none;
   }
   
-  .mat-button input[type="radio"]:checked + span {
-    background-color: green !important; 
-    color: #fff; 
+  .active-radio {
+    background-color: #F44336; 
+    color: white; 
   }
   
+  .mat-button:not(.active-radio):hover {
+    background-color: #e0e0e0; 
+  }
+  
+
+
+  .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  
+  .tag {
+    display: flex;
+    align-items: center;
+    background-color: #f1f1f1;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #5a5a5a;
+    text-transform: capitalize; 
+  }
+  
+  .cancel-icon {
+    margin-left: 8px;
+    font-size: 16px;
+    color: grey;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .cancel-icon:hover {
+    color: #ff1a1a;
+  }
+
+  .applied-search-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px; 
+  }
+ 
+.header_main{
+  background-color:  rgb(249, 0, 0);
+  padding-right: 100px;
+  padding-left: 65px;
+}
+
+.img_src{
+  object-fit: cover;
+}
+
+.icon{
+  color: white;
+  cursor: pointer;
+}
+

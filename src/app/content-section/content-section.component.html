@@ -1,163 +1,203 @@
 <mat-drawer-container autosize>
-    <mat-drawer #drawer class="example-sidenav" mode="over" position="end">
-        <div>
-            <div class="d-flex justify-content-between align-items-center py-3">
-                <div class="mini_bold">
-                    filter by
-                </div>
-                <button mat-button  (click)="resetRewards()" color="warn">
-                    Reset All
-                </button>
-            </div>
-
-            <mat-divider></mat-divider>
-            <div class="py-2 mini_bold">
-                Sort
-            </div>
-            <div class="py-2">
-
-              <div class="radio-buttons border">
-                <label class="mat-button">
-                  <input 
-                    type="radio" 
-                    name="sortOrder" 
-                    value="asc" 
-                    [(ngModel)]="sortOrder" 
-                  />
-                  A to Z
-                </label>
-                <label class="mat-button">
-                  <input 
-                    type="radio" 
-                    name="sortOrder" 
-                    value="desc" 
-                    [(ngModel)]="sortOrder" 
-                  />
-                   Z to A
-                </label>
-              </div>
-            
-            </div>
-            <button (click)="applySort()" class="w-100" color="warn" mat-raised-button>
-                Apply
-            </button>
+  <mat-drawer #drawer class="example-sidenav" mode="over" position="end">
+    <div>
+      <div class="d-flex justify-content-between align-items-center py-3">
+        <div class="mini_bold">
+          filter by
         </div>
+        <button mat-button (click)="resetRewards()" color="warn">
+          Reset All
+        </button>
+      </div>
 
-    </mat-drawer>
-    <div class="w-100">
-        <div class=" container p-5 bg-main">
-            <div class="main-heading py-3">
-                Search
-            </div>
-
-            <div>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="bi bi-search"></i></span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Search..." aria-label="Search">
-                </div>
-            </div>
-            <div class="sub-heading py-4">
-                Applied Search:
-            </div>
-
-            <div>
-                <div class="row g-3">
-
-                    <div class="col-12 col-md-4 p-3">
-                        <div class="w-100">
-                            <div class="mini_heading py-3">Categories</div>
-
-
-                            <div>
-                                <div>
-                                
-                                    <mat-accordion  multi>
-                                        <mat-expansion-panel>
-                                          <mat-expansion-panel-header>
-                                            <span class="flex-grow-1">e-voucher</span>
-                                            <mat-icon class="me-2" color="warn">check_circle</mat-icon>
-                                          </mat-expansion-panel-header>
-                                        </mat-expansion-panel>
-                                        <mat-expansion-panel>
-                                          <mat-expansion-panel-header>
-                                            <span class="flex-grow-1">Products</span>
-                                            <mat-icon class="material-icons-outlined  me-2">check_circle</mat-icon>
-                                          </mat-expansion-panel-header>
-                                        </mat-expansion-panel>
-                                      </mat-accordion>
-                                    <mat-accordion >
-                                       
-                                        <mat-expansion-panel class="mt-2" >
-                                          <mat-expansion-panel-header>
-                                            <span class="flex-grow-1">Evergreen</span>
-                                            <mat-icon class="material-icons-outlined  me-2">check_circle</mat-icon>
-                                          </mat-expansion-panel-header>
-                                        </mat-expansion-panel>
-                                      </mat-accordion>
-                                    <mat-accordion  >
-                                       
-                                        <mat-expansion-panel class="mt-2">
-                                          <mat-expansion-panel-header>
-                                            <span class="flex-grow-1" >Fashion & Retail</span>
-                                            <mat-icon class="material-icons-outlined  me-2">check_circle</mat-icon>
-                                          </mat-expansion-panel-header>
-                                        </mat-expansion-panel>
-                                      </mat-accordion>
-                                      
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-8 p-2">
-                        <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
-                          <div class="mb-2 mb-md-0">
-                            <span class="result">{{ rewards.length }} results found</span>
-                          </div>
-                          <div>
-                            <button type="button" mat-flat-button (click)="drawer.toggle()" color="warn">Sort</button>
-                          </div>
-                        </div>
-                        <div class="row text-center">
-                          <div *ngFor="let reward of sortedRewards" class="col-12 col-md-4 mb-3">
-                            <mat-card class="h-100 rounded position-relative">
-                             
-                              <img *ngIf="reward.display_img_url" class="rounded" [src]="reward.display_img_url" height="240px" alt="{{ reward.company }}" />
-                              <img *ngIf="!reward.display_img_url" class="rounded" src="../../assets/Profile-pic/Profile.png" height="240px" alt="Default Image" />
-                      
-            
-                              <div *ngIf="reward.quantity === 0" class="out-of-stock-overlay">
-                                Out of Stock
-                              </div>
-                              <div *ngIf="reward.quantity !== null && reward.quantity <= 10 && reward.quantity > 0" class="high-demand-overlay">
-                                ON High Demand (Only {{ reward.quantity }} rewards left)
-                              </div>
-                              <mat-card-content>
-                                <div class="py-2">{{ reward.company }}</div>
-                              </mat-card-content>
-                      
-                              <mat-divider></mat-divider>
-                      
-                              <div class="mt-2">
-                                <div>{{ reward.points }} <span>Points</span></div>
-                              </div>
-                      
-                              <div class="mt-2 py-3">
-                                <div>
-                                  <span class="valid_until">Valid Until:</span> 
-                                  {{ reward.valid_until | date: 'dd-MM-yyyy' }}
-                                </div>
-                              </div>
-                            </mat-card>
-                          </div>
-                        </div>
-                      </div>
-                      
-
-                </div>
-            </div>
+      <mat-divider></mat-divider>
+      <div class="py-2 mini_bold">
+        Sort
+      </div>
+      <div class="d-flex flex-column">
+        <div class="py-2 flex-grow-1">
+          <div class="radio-buttons">
+            <label class="mat-button" [ngClass]="{'active-radio': sortOrder === 'asc'}">
+              <input type="radio" name="sortOrder" value="asc" [(ngModel)]="sortOrder" />
+              A to Z
+            </label>
+            <label class="mat-button" [ngClass]="{'active-radio': sortOrder === 'desc'}">
+              <input type="radio" name="sortOrder" value="desc" [(ngModel)]="sortOrder" />
+              Z to A
+            </label>
+          </div>
         </div>
+        <button (click)="applySort()" class="btn btn-danger w-100">
+          Apply
+        </button>
+      </div>
+      
+      
     </div>
+
+  </mat-drawer>
+  <div class="w-100">
+    <div class="">
+      <div class="d-flex justify-content-between align-items-center  py-1 header_main">
+        <div>
+          <img  
+          src="../../assets/Logo/logo.svg" 
+          alt="Profile Picture" 
+          width="250px" 
+          height="50px" 
+        />
+        </div>
+  
+        <div class="d-flex align-items-center gap-3">
+      
+          <mat-icon matBadge="15" class="icon" matBadgeColor="warn">notifications</mat-icon>
+    
+     
+          <mat-icon class="icon">language</mat-icon>
+    
+          <img 
+            class="rounded img_src" 
+            src="../../assets/Profile-pic/Profile.png" 
+            alt="Profile Picture" 
+            width="40px" 
+            height="40px" 
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class=" container p-5 bg-main">
+      <div class="main-heading py-3">
+        Search
+      </div>
+
+      <div>
+        <div>
+    
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="bi bi-search"></i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="Search" aria-label="Search" [(ngModel)]="searchTerm"
+              (keydown.enter)="addTag()" />
+          </div>
+
+          <div class="applied-search-container">
+            <div class="sub-heading">
+              Applied Search:
+            </div>
+            <div class="tags-container">
+              <div class="tag" *ngFor="let tag of tags; let i = index">
+                {{ tag }}
+                <i class="bi bi-x-circle cancel-icon" (click)="removeTag(i)"></i>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div>
+        <div class="row g-3">
+
+          <div class="col-12 col-md-4 p-3">
+            <div class="w-100">
+              <div class="mini_heading py-3">Categories</div>
+
+
+              <div>
+                <div>
+
+                  <mat-accordion multi>
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header>
+                        <span class="flex-grow-1">e-voucher</span>
+                        <mat-icon class="me-2" color="warn">check_circle</mat-icon>
+                      </mat-expansion-panel-header>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header>
+                        <span class="flex-grow-1">Products</span>
+                        <mat-icon class="material-icons-outlined  me-2">check_circle</mat-icon>
+                      </mat-expansion-panel-header>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                  <mat-accordion>
+
+                    <mat-expansion-panel class="mt-2">
+                      <mat-expansion-panel-header>
+                        <span class="flex-grow-1">Evergreen</span>
+                        <mat-icon class="material-icons-outlined  me-2">check_circle</mat-icon>
+                      </mat-expansion-panel-header>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                  <mat-accordion>
+
+                    <mat-expansion-panel class="mt-2">
+                      <mat-expansion-panel-header>
+                        <span class="flex-grow-1">Fashion & Retail</span>
+                        <mat-icon class="material-icons-outlined  me-2">check_circle</mat-icon>
+                      </mat-expansion-panel-header>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-8 p-2">
+            <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+              <div class="mb-2 mb-md-0">
+                <span class="result">{{ rewards.length }} results found</span>
+              </div>
+              <div>
+                <button type="button" mat-flat-button (click)="drawer.toggle()" color="warn">Sort</button>
+              </div>
+            </div>
+            <div class="row text-center">
+              <div *ngFor="let reward of sortedRewards" class="col-12 col-md-4 mb-3">
+                <mat-card class="h-100 rounded position-relative">
+
+                  <img *ngIf="reward.display_img_url" class="rounded img_logo" [src]="reward.display_img_url" height="240px"
+                    alt="{{ reward.company }}" />
+                  <img *ngIf="!reward.display_img_url" class="rounded" src="../../assets/Company_logo/no_img.jpg"
+                    height="240px" alt="Default Image"  alt="{{ reward.company }}" />
+                   
+
+                  <div *ngIf="reward.quantity === 0" class="out-of-stock-overlay">
+                    Out of Stock
+                  </div>
+                  <div *ngIf="reward.quantity !== null && reward.quantity <= 10 && reward.quantity > 0"
+                    class="high-demand-overlay">
+                    ON High Demand (Only {{ reward.quantity }} rewards left)
+                  </div>
+                  <mat-card-content>
+                    <div class="py-2">{{ reward.company }}</div>
+                  </mat-card-content>
+
+                  <mat-divider></mat-divider>
+
+                  <div class="mt-2">
+                    <div>{{ reward.points }} <span>Points</span></div>
+                  </div>
+
+                  <div class="mt-2 py-3">
+                    <div>
+                      <span class="valid_until">Valid Until:</span>
+                      {{ reward.valid_until | date: 'dd-MM-yyyy' }}
+                    </div>
+                  </div>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
 </mat-drawer-container>
